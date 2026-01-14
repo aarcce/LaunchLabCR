@@ -1,0 +1,337 @@
+/*
+  ==========================================================
+  LaunchLabCR - styles.css
+  ==========================================================
+  Versión con:
+  - Fondo azul oscuro
+  - Texto blanco
+  - Header y cards adaptadas a dark theme
+  - Botones superiores tipo UbiqoCR
+*/
+
+/* ----------------------------------------------------------
+   1) Variables
+   ---------------------------------------------------------- */
+:root {
+  /* Colores base dados */
+  --c-red: #FF0000;
+  --c-white: #FFFFFF;
+  --c-black: #000000;
+  --c-yellow: #FFFF00;
+  --c-amber: #FFC001;
+  --c-salmon: #F1373A;
+  --c-wine: #CB0634;
+  --c-orange: #FD533A;
+
+  /* NUEVO: fondo oscuro */
+  --bg-dark: #0B1C2D;
+  --bg-card: #12263F;
+  --bg-header: #0E2238;
+
+  /* Texto */
+  --text-main: #FFFFFF;
+  --text-muted: #C7D2E0;
+
+  /* Acentos */
+  --primary: var(--c-orange);
+  --accent: var(--c-amber);
+
+  --border-dark: rgba(255, 255, 255, 0.12);
+
+  --max-width: 1100px;
+  --pad-x: clamp(16px, 6vw, 48px);
+
+  --radius: 14px;
+  --shadow: 0 12px 30px rgba(0,0,0,0.45);
+
+  --font: "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
+}
+
+/* ----------------------------------------------------------
+   2) Reset
+   ---------------------------------------------------------- */
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: var(--font);
+  background: var(--bg-dark);
+  color: var(--text-main);
+  line-height: 1.6;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* ----------------------------------------------------------
+   3) Utilidades
+   ---------------------------------------------------------- */
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--pad-x);
+}
+
+.center { text-align: center; }
+.muted { color: var(--text-muted); }
+
+/* Botón reutilizable */
+.btn {
+  display: inline-block;
+  text-decoration: none;
+  font-weight: 800;
+  padding: 0.8rem 1.1rem;
+  border-radius: 999px;
+  color: var(--c-black);
+  background: linear-gradient(90deg, var(--accent), var(--primary));
+  box-shadow: 0 12px 20px rgba(0,0,0,0.35);
+  transition: transform 0.15s ease, filter 0.15s ease;
+}
+.btn:hover { transform: translateY(-2px); filter: brightness(1.05); }
+
+/* ----------------------------------------------------------
+   4) Header / Nav
+   ---------------------------------------------------------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(14, 34, 56, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border-dark);
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.9rem 0;
+}
+
+.logo {
+  font-weight: 900;
+  font-size: 1.25rem;
+  color: var(--c-white);
+  text-decoration: none;
+}
+
+/* ----------------------------------------------------------
+   5) Botones superiores (UbiqoCR-style)
+   ---------------------------------------------------------- */
+.nav-buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.nav-buttons a {
+  text-decoration: none;
+  font-weight: 800;
+  padding: 0.55rem 0.9rem;
+  border-radius: 999px;
+  color: var(--c-white);
+  border: 1px solid transparent;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.nav-buttons a:hover {
+  background: rgba(255, 192, 1, 0.22);
+}
+
+.nav-buttons a.active {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.6);
+  color: #FFFFFF;
+}
+
+
+/* Responsive */
+@media (max-width: 720px) {
+  .nav-buttons {
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+}
+
+/* ----------------------------------------------------------
+   6) Hero (index)
+   ---------------------------------------------------------- */
+.hero {
+  background:
+    radial-gradient(1000px 400px at 50% 0%, rgba(255, 192, 1, 0.18), transparent 60%),
+    radial-gradient(900px 450px at 80% 10%, rgba(253, 83, 58, 0.15), transparent 55%);
+  padding: 3.2rem 0 2.8rem;
+}
+
+.hero-inner {
+  text-align: center;
+  display: grid;
+  gap: 1rem;
+  justify-items: center;
+}
+
+.hero-figure {
+  margin: 0 auto;
+  width: min(700px, 92vw);
+  display: flex;
+  justify-content: center;
+}
+
+
+.hero-image {
+  display: block;
+  margin: 0 auto;
+}
+
+
+.hero-image-small {
+  max-width: 500px;
+  width: 100%;
+}
+
+.hero-text {
+  max-width: 75ch;
+  color: var(--text-muted);
+  font-size: 1.05rem;
+}
+
+/* ----------------------------------------------------------
+   7) Secciones internas
+   ---------------------------------------------------------- */
+.section {
+  padding: 3rem 0;
+}
+
+.section-alt {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.page-title {
+  text-align: center;
+  font-size: clamp(1.9rem, 4vw, 2.5rem);
+  margin-bottom: 1.4rem;
+}
+
+/* ----------------------------------------------------------
+   8) Cards
+   ---------------------------------------------------------- */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-dark);
+  border-radius: var(--radius);
+  padding: 1.4rem;
+  box-shadow: var(--shadow);
+}
+
+.card-title {
+  margin: 0 0 0.6rem;
+  font-size: 1.3rem;
+}
+
+/* ----------------------------------------------------------
+   9) Timeline
+   ---------------------------------------------------------- */
+.timeline {
+  list-style: none;
+  padding: 0;
+  margin-top: 1rem;
+  display: grid;
+  gap: 0.7rem;
+}
+
+.timeline li {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 0.75rem;
+  padding: 0.7rem;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.timeline-when {
+  font-weight: 900;
+  color: var(--accent);
+}
+
+.timeline-what {
+  font-weight: 600;
+}
+
+@media (max-width: 560px) {
+  .timeline li { grid-template-columns: 1fr; }
+}
+
+/* ----------------------------------------------------------
+   10) Galería
+   ---------------------------------------------------------- */
+.subsection-title {
+  margin: 2rem 0 0.8rem;
+  font-size: 1.15rem;
+}
+
+.image-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.9rem;
+}
+
+.image-row img {
+  width: 100%;
+  height: 360px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 12px;
+  border: 1px solid var(--border-dark);
+  box-shadow: var(--shadow);
+}
+
+
+@media (max-width: 780px) {
+  .image-row { grid-template-columns: 1fr; }
+}
+
+/* ----------------------------------------------------------
+   11) Nosotros
+   ---------------------------------------------------------- */
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+@media (max-width: 900px) {
+  .grid-2 { grid-template-columns: 1fr; }
+}
+
+.big-centered-title {
+  text-align: center;
+  font-size: 1.6rem;
+  margin-bottom: 0.6rem;
+  color: var(--accent);
+}
+
+/* ----------------------------------------------------------
+   12) Contacto
+   ---------------------------------------------------------- */
+.contact-progress {
+  font-size: 1.2rem;
+  font-weight: 900;
+  color: var(--accent);
+}
+
+/* ----------------------------------------------------------
+   13) Footer
+   ---------------------------------------------------------- */
+.site-footer {
+  border-top: 1px solid var(--border-dark);
+  background: var(--bg-header);
+  padding: 1.5rem 0;
+}
+
+.footer-inner {
+  text-align: center;
+  color: var(--text-muted);
+}
